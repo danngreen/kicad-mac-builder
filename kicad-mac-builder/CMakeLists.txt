@@ -56,7 +56,7 @@ execute_process(COMMAND brew --cellar oce OUTPUT_VARIABLE OCE_BASEDIR RESULT_VAR
 if (NOT ${FOUND_OCE_BASEDIR_EXIT_CODE} EQUAL 0)
   message( FATAL_ERROR "Unable to find OCE's base directory from brew.  Make sure you have installed all the dependencies per the README. Exiting." )
 endif()
-execute_process(COMMAND find ${OCE_BASEDIR} -name Resources OUTPUT_VARIABLE OCE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE FOUND_OCE_EXIT_CODE)
+execute_process(COMMAND find ${OCE_BASEDIR} -name Resources -print -quit OUTPUT_VARIABLE OCE_DIR OUTPUT_STRIP_TRAILING_WHITESPACE RESULT_VARIABLE FOUND_OCE_EXIT_CODE)
 if (NOT ${FOUND_OCE} EQUAL 0)
   message( FATAL_ERROR "Unable to find Resources in ${OCE_BASEDIR}.  Make sure you have installed all the dependencies per the README. Exiting." )
 endif()
